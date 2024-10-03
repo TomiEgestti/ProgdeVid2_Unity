@@ -29,12 +29,13 @@ public class Mover : MonoBehaviour
     private void Update()
     {
         moverHorizontal = Input.GetAxis("Horizontal");
+        miAnimator.SetBool("EnAire", miRigidbody2D.velocity.y != 0f);
         direccion = new Vector2(moverHorizontal, 0f);
 
         int velocidadX = (int)miRigidbody2D.velocity.x;
         miSprite.flipX = velocidadX < 0f;
         miAnimator.SetInteger("vel", velocidadX);
-        miAnimator.SetBool("EnAire", miRigidbody2D.velocity.y != 0f);
+       
     }
     private void FixedUpdate()
     {
