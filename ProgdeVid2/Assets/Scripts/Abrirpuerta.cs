@@ -8,6 +8,7 @@ public class Abrirpuerta : MonoBehaviour
     private Rigidbody2D miRigidbody2D;
     private Animator miAnimator;
     private AudioSource miAudioSource;
+    private CircleCollider2D coli;
     [SerializeField] private AudioClip Finnivel;
 
     // Codigo ejecutado cuando el objeto se activa en el nivel
@@ -16,6 +17,7 @@ public class Abrirpuerta : MonoBehaviour
         miRigidbody2D = GetComponent<Rigidbody2D>();
         miAnimator = GetComponent<Animator>();
         miAudioSource = GetComponent<AudioSource>();
+        coli = GetComponent<CircleCollider2D>();
         // Inicializar el estado del booleano en false para que inicie cerrado
         miAnimator.SetBool("Abrio?", false);
     }
@@ -28,6 +30,7 @@ public class Abrirpuerta : MonoBehaviour
             miAnimator.SetBool("Abrio?", true);
             miAudioSource.PlayOneShot(Finnivel);
             Destroy(other.gameObject);
+            Destroy(coli);
             Debug.Log("GANASTE");
         }
     }

@@ -4,7 +4,7 @@ using TMPro;
 
 public class Dialogoon : MonoBehaviour
 {
-    [SerializeField, TextArea(4,7)] private string[] lineas;
+    [SerializeField, TextArea(4,6)] private string[] lineas;
     [SerializeField] private GameObject panel;
     [SerializeField] private TMP_Text texto;
 

@@ -8,20 +8,25 @@ public class Vida : MonoBehaviour
     [SerializeField] private float vida = 5f;
 
     private Rigidbody2D miRigidbody2D;
+    private Animator miAnimator;
     private bool isDead = false;  // Variable para verificar si ya está "muerto"
+    private bool dañado = false;
 
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
+        miAnimator = GetComponent<Animator>();
     }
 
     public void ModificarVida(float puntos)
     {
+        dañado = true;
         vida += puntos;
         if (vida <= 0 && !isDead)  // Verificar que la vida es <= 0 y que no está "muerto"
         {
             Morir();  // Llamar a la función que maneja la "muerte"
         }
+     
         Debug.Log(EstasVivo());
     }
 
