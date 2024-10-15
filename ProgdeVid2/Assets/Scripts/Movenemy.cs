@@ -11,7 +11,6 @@ public class Movenemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Obtener el Rigidbody2D del enemigo
-        rb.gravityScale = 0;               // Desactivar la gravedad
     }
 
     void Update()
