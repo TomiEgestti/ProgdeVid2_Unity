@@ -386,9 +386,9 @@ GameObject:
   - component: {fileID: 156234879}
   - component: {fileID: 156234884}
   - component: {fileID: 156234885}
-  - component: {fileID: 156234886}
   - component: {fileID: 156234887}
   - component: {fileID: 156234888}
+  - component: {fileID: 156234889}
   m_Layer: 6
   m_Name: Jugador
   m_TagString: Player
@@ -574,19 +574,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &156234886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156234878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e6d548a25df0d74a838eabd8aaaba1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdPoint: {fileID: 1670977953}
 --- !u!82 &156234887
 AudioSource:
   m_ObjectHideFlags: 0
@@ -696,6 +683,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 15
+--- !u!114 &156234889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156234878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffdde0c8095b0148b872df3a270eb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &357889609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6679141265207450678, guid: 19d1f969600c4da49b0ece371de913be, type: 3}
@@ -3977,7 +3976,7 @@ Transform:
   m_GameObject: {fileID: 667937332}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.01, y: 16.83, z: 0}
+  m_LocalPosition: {x: -31.01, y: 21.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
