@@ -4902,8 +4902,8 @@ GameObject:
   - component: {fileID: 1517028609}
   - component: {fileID: 1517028608}
   - component: {fileID: 1517028607}
-  m_Layer: 9
-  m_Name: Llave
+  m_Layer: 0
+  m_Name: Llave azul
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4932,7 +4932,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517028605}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -4983,7 +4983,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021915674, y: -0.1460084}
+  m_Offset: {x: 0.0091507435, y: -0.03968963}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4994,7 +4994,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2709923, y: 1.486691}
+  m_Size: {x: 2.5262957, y: 1.7843866}
   m_EdgeRadius: 0
 --- !u!212 &1517028609
 SpriteRenderer:
@@ -5770,6 +5770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Finnivel: {fileID: 8300000, guid: 53fa85cca069d8d44b4538d0e4dd781a, type: 3}
+  requiredItem: Llave azul
 --- !u!82 &1714455580
 AudioSource:
   m_ObjectHideFlags: 0

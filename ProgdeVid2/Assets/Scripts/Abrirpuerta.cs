@@ -4,34 +4,42 @@ using UnityEngine;
 
 public class Abrirpuerta : MonoBehaviour
 {
-    // Variable para referenciar otro componente del objeto
+    private ObjectCollector objectCollector;
+
     private Rigidbody2D miRigidbody2D;
     private Animator miAnimator;
     private AudioSource miAudioSource;
     private CircleCollider2D coli;
     [SerializeField] private AudioClip Finnivel;
 
-    // Codigo ejecutado cuando el objeto se activa en el nivel
+    [SerializeField] private string requiredItem = "Llave azul"; 
+
+    // Código ejecutado cuando el objeto se activa en el nivel
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
         miAnimator = GetComponent<Animator>();
         miAudioSource = GetComponent<AudioSource>();
         coli = GetComponent<CircleCollider2D>();
-        // Inicializar el estado del booleano en false para que inicie cerrado
+
+        objectCollector = GameObject.FindWithTag("Player").GetComponent<ObjectCollector>();
+
         miAnimator.SetBool("Abrio?", false);
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Llave")
+        if (other.CompareTag("Player"))
         {
-            miAnimator.SetBool("Abrio?", true);
-            miAudioSource.PlayOneShot(Finnivel);
-            Destroy(other.gameObject);
-            Destroy(coli);
-            Debug.Log("GANASTE");
+            // Verificar si el jugador tiene la llave azul en su inventario
+            if (objectCollector.HasItem(requiredItem))
+            {
+                miAnimator.SetBool("Abrio?", true);
+                miAudioSource.PlayOneShot(Finnivel);
+                Destroy(coli);
+
+                objectCollector.RemoveItem(requiredItem);
+            }
         }
     }
 }

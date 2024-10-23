@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Vida : MonoBehaviour
 {
-    [Header("Configuracion")]
-    [SerializeField] private float vida = 5f;
+    [SerializeField] PerfilJugador PerfilJugador;
 
     private Rigidbody2D miRigidbody2D;
     private Animator miAnimator;
@@ -21,8 +20,8 @@ public class Vida : MonoBehaviour
     public void ModificarVida(float puntos)
     {
         dañado = true;
-        vida += puntos;
-        if (vida <= 0 && !isDead)  // Verificar que la vida es <= 0 y que no está "muerto"
+        PerfilJugador.vida += puntos;
+        if (PerfilJugador.vida <= 0 && !isDead)  // Verificar que la vida es <= 0 y que no está "muerto"
         {
             Morir();  // Llamar a la función que maneja la "muerte"
         }
@@ -32,7 +31,7 @@ public class Vida : MonoBehaviour
 
     private bool EstasVivo()
     {
-        return vida > 0;
+        return PerfilJugador.vida > 0;
     }
 
     private void Morir()
