@@ -5,7 +5,8 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     [SerializeField]
-    private PerfilJugador PerfilJugador;
+    private PerfilJugador perfilJugador;
+    public PerfilJugador PerfilJugador { get => perfilJugador; }
 
     // Variables de uso interno en el script
     private float moverHorizontal;
@@ -16,15 +17,15 @@ public class Mover : MonoBehaviour
     private Animator miAnimator;
     private SpriteRenderer miSprite;
 
-    // Codigo ejecutado cuando el objeto se activa en el nivel
+    // Código ejecutado cuando el objeto se activa en el nivel
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
-        miAnimator = GetComponent<Animator>(); 
+        miAnimator = GetComponent<Animator>();
         miSprite = GetComponent<SpriteRenderer>();
     }
 
-    // Codigo ejecutado en cada frame del juego (Intervalo variable)
+    // Código ejecutado en cada frame del juego (Intervalo variable)
     private void Update()
     {
         moverHorizontal = Input.GetAxis("Horizontal");
@@ -32,12 +33,15 @@ public class Mover : MonoBehaviour
         direccion = new Vector2(moverHorizontal, 0f);
 
         int velocidadX = (int)miRigidbody2D.velocity.x;
-        miSprite.flipX = velocidadX < 0f;
-        miAnimator.SetInteger("vel", velocidadX);
-       
+        miSprite.flipX = moverHorizontal < 0f;
+        miAnimator.SetInteger("vel", Mathf.Abs(velocidadX));
     }
+
+    // Código ejecutado en cada paso de física (Intervalo fijo)
     private void FixedUpdate()
     {
-        miRigidbody2D.AddForce(direccion * PerfilJugador.velocidad);
+        // Solo aplicamos velocidad horizontal sin afectar la velocidad vertical existente
+        Vector2 newVelocity = new Vector2(moverHorizontal * PerfilJugador.velocidad, miRigidbody2D.velocity.y);
+        miRigidbody2D.velocity = newVelocity;
     }
 }

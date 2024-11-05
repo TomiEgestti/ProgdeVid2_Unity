@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class Vida : MonoBehaviour
 {
     [SerializeField] PerfilJugador PerfilJugador;
 
+    [SerializeField] private UnityEvent<float> OnLivesChanged;
+
+    private void Start()
+    {
+        OnLivesChanged.Invoke(PerfilJugador.vida);
+    }
     private Rigidbody2D miRigidbody2D;
     private Animator miAnimator;
     private bool isDead = false;  // Variable para verificar si ya está "muerto"
