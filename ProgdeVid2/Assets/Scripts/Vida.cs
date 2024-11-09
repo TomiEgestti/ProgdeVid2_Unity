@@ -6,54 +6,68 @@ using UnityEngine.Events;
 
 public class Vida : MonoBehaviour
 {
-    [SerializeField] PerfilJugador PerfilJugador;
-
+    [SerializeField] private PerfilJugador PerfilJugador;
     [SerializeField] private UnityEvent<float> OnLivesChanged;
+
+    private Rigidbody2D miRigidbody2D;
+    private Animator miAnimator;
+
+    private int vidaActual;  
+    private bool isDead = false;
+    private bool dañado = false;
 
     private void Start()
     {
-        OnLivesChanged.Invoke(PerfilJugador.vida);
-    }
-    private Rigidbody2D miRigidbody2D;
-    private Animator miAnimator;
-    private bool isDead = false;  // Variable para verificar si ya está "muerto"
-    private bool dañado = false;
+        vidaActual = PerfilJugador.vida;
+        OnLivesChanged.Invoke(vidaActual);
 
-    private void OnEnable()
-    {
         miRigidbody2D = GetComponent<Rigidbody2D>();
         miAnimator = GetComponent<Animator>();
     }
 
-    public void ModificarVida(float puntos)
+    public void ModificarVida(int puntos)
     {
         dañado = true;
-        PerfilJugador.vida += puntos;
-        if (PerfilJugador.vida <= 0 && !isDead)  // Verificar que la vida es <= 0 y que no está "muerto"
+        vidaActual += puntos;
+
+        OnLivesChanged.Invoke(vidaActual);
+
+        if (vidaActual <= 0 && !isDead)
         {
-            Morir();  // Llamar a la función que maneja la "muerte"
+            Morir();
         }
-     
+
         Debug.Log(EstasVivo());
     }
 
     private bool EstasVivo()
     {
-        return PerfilJugador.vida > 0;
+        return vidaActual > 0;
     }
 
     private void Morir()
     {
         isDead = true;
 
-        // Rotar el jugador para que parezca "tirado"
-        transform.rotation = Quaternion.Euler(0f, 0f, 90f);  // Rotar 90 grados en el eje Z
+        transform.rotation = Quaternion.Euler(0f, 0f, 90f);
 
-        // Desactivar el Rigidbody para que no pueda moverse
         miRigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         miRigidbody2D.velocity = Vector2.zero;
         GetComponent<Mover>().enabled = false;
         GetComponent<Saltar>().enabled = false;
     }
 
+   
+    public void ReiniciarVida()
+    {
+        vidaActual = PerfilJugador.vida;
+        OnLivesChanged.Invoke(vidaActual);
+        isDead = false;
+        dañado = false;
+
+        transform.rotation = Quaternion.identity;
+        miRigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+        GetComponent<Mover>().enabled = true;
+        GetComponent<Saltar>().enabled = true;
     }
+}

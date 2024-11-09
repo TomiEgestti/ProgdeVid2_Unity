@@ -13,7 +13,6 @@ public class Dialogoon : MonoBehaviour
     private int Lineindex;
     private float tiempo = 0.05f;
 
-    // Update is called once per frame
     void Update()
     {
         if (isplayerinrange)

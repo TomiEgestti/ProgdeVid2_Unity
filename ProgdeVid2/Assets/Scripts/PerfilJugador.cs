@@ -10,7 +10,7 @@ public class PerfilJugador : ScriptableObject
     [SerializeField] public float fuerzaSalto = 5f;
 
     [Header("Atributos")]
-    [SerializeField] public float vida = 5f;
+    [SerializeField] public int vida = 3;
 
     [Header("Audio y SFX")]
     [SerializeField] public AudioClip SaltoSFX;

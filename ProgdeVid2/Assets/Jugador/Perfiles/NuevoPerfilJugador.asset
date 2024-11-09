@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3a0303bb06e4d4d936210796f52412, type: 3}
   m_Name: NuevoPerfilJugador
   m_EditorClassIdentifier: 
-  velocidad: 10
-  fuerzaSalto: 15
-  vida: 5
+  velocidad: 7
+  fuerzaSalto: 17
+  vida: 3
   SaltoSFX: {fileID: 0}

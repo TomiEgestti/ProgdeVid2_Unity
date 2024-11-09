@@ -14,7 +14,6 @@ public class Abrirpuerta : MonoBehaviour
 
     [SerializeField] private string requiredItem = "Llave azul"; 
 
-    // Código ejecutado cuando el objeto se activa en el nivel
     private void OnEnable()
     {
         miRigidbody2D = GetComponent<Rigidbody2D>();
@@ -31,7 +30,6 @@ public class Abrirpuerta : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Verificar si el jugador tiene la llave azul en su inventario
             if (objectCollector.HasItem(requiredItem))
             {
                 miAnimator.SetBool("Abrio?", true);

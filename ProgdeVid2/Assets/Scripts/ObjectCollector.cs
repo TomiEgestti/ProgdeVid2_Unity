@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ObjectCollector : MonoBehaviour
 {
-    // Diccionario para almacenar el inventario del jugador
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
+    private bool isInTrigger = false; 
+    private string currentItem = ""; 
 
     // Método para recoger objetos
     public void CollectItem(string itemName)
@@ -20,13 +21,11 @@ public class ObjectCollector : MonoBehaviour
         }
     }
 
-    // Método para verificar si el jugador tiene un objeto específico en su inventario
     public bool HasItem(string itemName)
     {
         return inventory.ContainsKey(itemName);
     }
 
-    // Método para eliminar un objeto del inventario
     public void RemoveItem(string itemName)
     {
         if (inventory.ContainsKey(itemName))
@@ -40,15 +39,30 @@ public class ObjectCollector : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) 
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (other.CompareTag("Pickup"))
         {
-            if (other.CompareTag("Pickup"))
-            {
-                CollectItem(other.gameObject.name);
-                Destroy(other.gameObject);
-            }
+            isInTrigger = true; 
+            currentItem = other.gameObject.name; 
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Pickup"))
+        {
+            isInTrigger = false; 
+            currentItem = ""; 
+        }
+    }
+
+    void Update()
+    {
+        if (isInTrigger && Input.GetKeyDown(KeyCode.E))
+        {
+            CollectItem(currentItem); 
+            GameObject.Find(currentItem)?.SetActive(false); 
         }
     }
 }
