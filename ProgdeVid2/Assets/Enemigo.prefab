@@ -14,11 +14,10 @@ GameObject:
   - component: {fileID: 2488504468458713406}
   - component: {fileID: 5978241230767404040}
   - component: {fileID: 5232300957771032595}
-  - component: {fileID: 3217505982543715660}
   - component: {fileID: 5686664863884365358}
   m_Layer: 8
   m_Name: Enemigo
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,19 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   movingRight: 1
---- !u!114 &3217505982543715660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6679141265207450678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e6d548a25df0d74a838eabd8aaaba1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  holdPoint: {fileID: 0}
 --- !u!114 &5686664863884365358
 MonoBehaviour:
   m_ObjectHideFlags: 0

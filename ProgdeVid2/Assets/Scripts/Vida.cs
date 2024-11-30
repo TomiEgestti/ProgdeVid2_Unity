@@ -10,6 +10,7 @@ public class Vida : MonoBehaviour
     [SerializeField] private UnityEvent<float> OnLivesChanged;
 
     private Rigidbody2D miRigidbody2D;
+    private SpriteRenderer miSpriteRenderer;
     private Animator miAnimator;
 
     private int vidaActual;  
@@ -50,11 +51,12 @@ public class Vida : MonoBehaviour
         isDead = true;
 
         transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-
+        miSpriteRenderer.color = Color.red;
         miRigidbody2D.bodyType = RigidbodyType2D.Kinematic;
         miRigidbody2D.velocity = Vector2.zero;
         GetComponent<Mover>().enabled = false;
         GetComponent<Saltar>().enabled = false;
+
     }
 
    

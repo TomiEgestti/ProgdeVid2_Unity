@@ -14,13 +14,11 @@ public class ProyectilRecto : MonoBehaviour
 
     private void OnEnable()
     {
-        // Reiniciar el contador cada vez que el proyectil se activa
         tiempoTranscurrido = 0f;
     }
 
     void Start()
     {
-        // Obtener la referencia al ObjectPooler (asegúrate de que este componente exista)
         objectPooler = FindObjectOfType<ObjectPooler>();
     }
 
@@ -39,8 +37,8 @@ public class ProyectilRecto : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Si colisiona con la pared (asigna el tag "Pared" a tus paredes)
-        if (collision.CompareTag("Pared"))
+        // Verificar si colisiona con el jugador o la pared
+        if (collision.CompareTag("Player") || collision.CompareTag("Pared"))
         {
             DesactivarProyectil();
         }
@@ -49,9 +47,6 @@ public class ProyectilRecto : MonoBehaviour
     // Desactiva el proyectil en lugar de destruirlo
     private void DesactivarProyectil()
     {
-        if (objectPooler != null)
-        {
-            objectPooler.DesactivarObjeto(gameObject);
-        }
+        gameObject.SetActive(false);
     }
 }
